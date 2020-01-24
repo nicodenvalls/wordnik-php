@@ -153,11 +153,13 @@ class APIClient {
 	 * @return string the serialized object
 	 */
 	public static function toQueryValue($object) {
-        if (is_array($object)) {
-            return implode(',', $object);
-        } else {
-            return $object;
-        }
+        	if (is_array($object)) {
+            		return implode(',', $object);
+        	} elseif (is_bool($object)) {
+        		return $object ? 'true' : 'false';
+        	} else {
+            	return $object;
+        	}
 	}
 
 	/**
